@@ -2,9 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dao.ContentCreationException;
 import com.example.demo.dao.ContentRepository;
-import com.example.demo.model.AiRequest;
-import com.example.demo.model.Content;
-import com.example.demo.model.GPT;
+import com.example.demo.model.*;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
@@ -60,6 +58,9 @@ public class ContentController {
         content.setTitle(contentDetails.getTitle());
         content.setImage(contentDetails.getImage());
         content.setContent(contentDetails.getContent());
+        content.setKeywords(contentDetails.getKeywords());
+        content.setSummary(contentDetails.getSummary());
+        content.setTranslation(contentDetails.getTranslation());
 
         return contentRepository.save(content);
     }

@@ -20,6 +20,14 @@ public class Content {
     @Column(length = 100000)
     private String content;
 
+    // TODO meta
+    @Column(length = 1000)
+    private String keywords = "";
+    @Column(length = 100000)
+    private String translation = "";
+    @Column(length = 100000)
+    private String summary = "";
+
     public Content(String title, String image, String content) {
         this.title = title;
         this.image = image;
@@ -48,5 +56,17 @@ public class Content {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
+
+    public void setTranslation(String translation) {
+        this.translation = translation;
     }
 }
