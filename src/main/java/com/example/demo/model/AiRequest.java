@@ -6,11 +6,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class AiRequest {
-    String prompt;
+    String task;
     String context;
 
-    public AiRequest(String prompt, String context) {
-        this.prompt = prompt;
+    public AiRequest(String task, String context) {
+        this.task = task;
         this.context = context;
     }
 
@@ -22,11 +22,11 @@ public class AiRequest {
         this.context = context;
     }
 
-    public String getPrompt() {
-        return prompt;
+    public String getTask() {
+        return task;
     }
 
-    public void setPrompt(String prompt) {
-        this.prompt = prompt;
+    public void setTask(String task) {
+        this.task = task;
     }
 }

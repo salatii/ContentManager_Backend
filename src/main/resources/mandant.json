@@ -1,0 +1,22 @@
+{
+  "mandant": "TEST",
+  "prompts": {
+    "title_generation": "Create 5 title in german for an {PLACEHOLDER_TYPE} about the topic '{PLACEHOLDER_TEXT}'. The title should be formulated {PLACEHOLDER_TONALITY}.",
+    "content_generation": "Generate 5 {PLACEHOLDER_TYPE} article in german with approx. {WORD_COUNT} words about the topic '{PLACEHOLDER_TEXT}'. The article should be written {PLACEHOLDER_TONALITY}.",
+    "translation": "Translate the following text from {SRC_LNG} to {TRG_LNG}: '{PLACEHOLDER_TEXT}'.",
+    "summarization": "Please write a summary about maximum {Summary_COUNT} words of the following text in the original language: '{PLACEHOLDER_TEXT}'.",
+    "spellchecking": "Check the following text for spelling and grammatical errors and correct them directly in the text in the original language: '{PLACEHOLDER_TEXT}'.",
+    "rewording": "Create a paraphrased version of the following text in the original language: '{PLACEHOLDER_TEXT}'.",
+    "keywords": "Please analyse the following text and extract the {KEYWORDS_COUNT} most important keywords in the original language: '{PLACEHOLDER_TEXT}'"
+  },
+  "properties": {
+    "language": "de",
+    "type": "blog article",
+    "tonality": "professional and informative",
+    "keywords": 5,
+    "summary":  25,
+    "generation": 50,
+    "srcLng": "de",
+    "trgLng": "en"
+  }
+}

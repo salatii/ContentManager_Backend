@@ -3,16 +3,22 @@ package com.example.demo.controller;
 import com.example.demo.dao.ContentCreationException;
 import com.example.demo.dao.ContentRepository;
 import com.example.demo.model.*;
+import com.example.demo.model.taks.*;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
 import org.apache.velocity.exception.ResourceNotFoundException;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,7 +84,7 @@ public class ContentController {
         List<Content> contentList = new ArrayList<>();
 
         try {
-            URL feedUrl = new URL("https://www.computerbild.de/rss/35011529.xml");
+            URL feedUrl = new URL("https://www.spiegel.de/netzwelt/index.rss");
             SyndFeedInput input = new SyndFeedInput();
             SyndFeed feed = input.build(new XmlReader(feedUrl));
             List<SyndEntry> entries = feed.getEntries();
@@ -96,7 +102,68 @@ public class ContentController {
     }
 
     @PostMapping(path = "/ai")
-    public String performeAi(@RequestBody AiRequest request) {
-        return GPT.performAI(request.getPrompt(), request.getContext());
+    public String performeAi(@RequestBody AiRequest request) throws JSONException {
+        String text = request.getContext();
+        String task = request.getTask();
+        Task prompt = null;
+
+        JSONObject obj = loadJson();
+        JSONObject properties = null;
+        try {
+            properties = obj.getJSONObject("properties");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        switch (task) {
+            case "translation":
+                System.out.println("Performing translation...");
+                prompt = new Translate(text, properties.get("srcLng").toString(), properties.get("trgLng").toString());
+                break;
+            case "summarization":
+                System.out.println("Performing summarization...");
+                prompt = new Summarize(text,  Integer.parseInt(properties.get("summary").toString()));
+                break;
+            case "spellchecking":
+                System.out.println("Performing spellchecking...");
+                prompt = new Spelling(text);
+                break;
+            case "keywords":
+                System.out.println("Extracting keywords...");
+                prompt = new ExtractKeywords(text, Integer.parseInt(properties.get("keywords").toString()));
+                break;
+            case "rewording":
+                System.out.println("Performing rewording...");
+                prompt = new Rewording(text);
+                break;
+            case "title":
+                System.out.println("Performing generate title...");
+                prompt = new TitleGeneration(text, properties.get("type").toString(), properties.get("tonality").toString());
+                break;
+            case "content":
+                System.out.println("Performing generate content...");
+                prompt = new ContentGeneration(text, properties.get("type").toString(), properties.get("tonality").toString(),  Integer.parseInt(properties.get("generation").toString()));
+                break;
+            default:
+                System.out.println("Invalid action.");
+                break;
+        }
+        return GPT.performAI(prompt.prompting());
+    }
+
+    private JSONObject loadJson() {
+        JSONObject obj = null;
+        String filename = "src/main/resources/mandant.json";
+        try {
+            obj = parseJSONFile(filename);
+        } catch (JSONException | IOException e) {
+            e.printStackTrace();
+        }
+        return obj;
+    }
+
+    private static JSONObject parseJSONFile(String filename) throws JSONException, IOException {
+        String content = new String(Files.readAllBytes(Paths.get(filename)));
+        return new JSONObject(content);
     }
 }

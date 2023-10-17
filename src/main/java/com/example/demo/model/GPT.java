@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import com.example.demo.dao.AiAPIException;
+import com.example.demo.model.taks.Translate;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,11 +14,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class GPT {
-    public static String performAI(String prompt, String context) {
-        String url = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "enter here api key";
-        String model = "gpt-3.5-turbo-16k-0613"; // current model of chatgpt api
+    private static String url = "https://api.openai.com/v1/chat/completions";
+    private static String apiKey = "enter api key here";
+    private static  String model = "gpt-3.5-turbo-16k-0613"; // current model of chatgpt api
 
+    public static String performAI(String prompt) {
         try {
             // Create the HTTP POST request
             URL obj = new URL(url);
@@ -27,8 +28,7 @@ public class GPT {
             con.setRequestProperty("Content-Type", "application/json");
 
             // Build the request body
-            //TODO schauen wie prompt und context am besten funtionieren also mit : oder anders
-            String body = "{\"model\": \"" + model + "\", \"messages\": [{\"role\": \"user\", \"content\": \"" + prompt + " " + context + "\"}]}";
+            String body = "{\"model\": \"" + model + "\", \"messages\": [{\"role\": \"user\", \"content\": \"" + prompt + "\"}]}";
             con.setDoOutput(true);
             OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
             writer.write(body);
