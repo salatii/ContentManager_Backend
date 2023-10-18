@@ -1,7 +1,5 @@
 package com.example.demo.model.taks;
 
-import com.example.demo.model.Content;
-
 public class ContentGeneration extends Task {
 
     String type;
