@@ -1,0 +1,29 @@
+{
+  "translation": [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Translate the following text from de to en: 'Die Philosophie ist die Suche nach Antworten auf grundlegende Fragen über das Leben und die Existenz.'"},
+    {"role": "assistant", "content": "Philosophy is the search for answers to fundamental questions about life and existence."}
+  ],
+  "summary": [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Please write a summary about maximum 15 words of the following text in the original language: 'William Shakespeare was an English playwright, poet, and actor who lived during the Renaissance period. He is widely regarded as one of the greatest writers in the English language and is known for his works such as 'Romeo and Juliet,' 'Hamlet,' and 'Macbeth.' Shakespeare's contributions to literature and the arts have had a lasting impact on culture and continue to be celebrated today.'"},
+    {"role": "assistant", "content": "William Shakespeare was an English playwright and poet known for his influential works."}
+  ],
+  "keywords": [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Please analyse the following text and extract the 4 most important keywords in the original language: 'Automation of jobs presents new challenges for the workplace.'"},
+    {"role": "assistant", "content": "1.Automation 2.Jobs 3.New Challenges 4.Workplace"}
+  ],
+  "spelling": [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Check the following text for spelling and grammatical errors and correct them directly in the text in the original language: 'Meine Schwester und ich spieln Fussball.'."},
+    {"role": "assistant", "content": "Meine Schwester und ich spielen Fußball."},
+    {"role": "user", "content": "Check the following text for spelling and grammatical errors and correct them directly in the text in the original language: 'This is more better.'."},
+    {"role": "assistant", "content": "This is better."}
+  ],
+  "rewording": [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Create a paraphrased version of the following text in the german language: 'Selbst in der Dunkelheit eines Regentages, erstrahlt die Schönheit der Natur. Die Tropfen auf den Blättern funkeln wie Diamanten im Morgenlicht.'"},
+    {"role": "assistant", "content": "Auch an einem verregneten Tag erstrahlt die Natur in ihrer vollen Pracht. Die Regentropfen auf den Blättern glänzen wie funkelnde Diamanten im ersten Licht des Tages."}
+  ]
+}
