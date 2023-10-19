@@ -61,14 +61,12 @@ public class GPT {
                 break;
             default:
                 System.out.println("Invalid action.");
-                break;
+                throw new AiAPIException("Invalid action");
         }
         String promptString =  prompt.prompting();
 
-        //TODO few shot prompting examples for title and content generation - testen ob es geht (titel ja, content ?)
         JSONObject fewshotJSON = loadJson("src/main/resources/few-shot.json");
         JSONArray fewshotArray = fewshotJSON.getJSONArray(task);
-
         // Den neuen Eintrag hinzufügen
         JSONObject newEntry = new JSONObject();
         newEntry.put("role", "user");
@@ -108,7 +106,6 @@ public class GPT {
 
     // This method extracts the response expected from chatgpt and returns it.
     private static String extractContentFromResponse(String response) {
-        //TODO remove "" from text
         try {
             JSONObject jsonObject = new JSONObject(response);
             // Zugriff auf die 'choices' Eigenschaft und deren Inhalt
