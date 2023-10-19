@@ -7,7 +7,9 @@
   "summarization": [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": "Please write a summary about maximum 15 words of the following text in the original language: 'William Shakespeare was an English playwright, poet, and actor who lived during the Renaissance period. He is widely regarded as one of the greatest writers in the English language and is known for his works such as 'Romeo and Juliet,' 'Hamlet,' and 'Macbeth.' Shakespeare's contributions to literature and the arts have had a lasting impact on culture and continue to be celebrated today.'"},
-    {"role": "assistant", "content": "William Shakespeare was an English playwright and poet known for his influential works."}
+    {"role": "assistant", "content": "William Shakespeare was an English playwright and poet known for his influential works."},
+    {"role": "user", "content": "Please write a summary about maximum 15 words of the following text in the original language: 'Das Great Barrier Reef ist das größte Korallenriffsystem der Welt und befindet sich im Korallenmeer vor der Küste von Queensland, Australien. Es ist eines der berühmtesten und vielfältigsten Ökosysteme der Erde, bekannt für seine atemberaubende marine Artenvielfalt und seine lebendigen Korallenformationen.'"},
+    {"role": "assistant", "content": "Das Great Barrier Reef ist das größte Korallenriff der Welt und berühmt für seine Artenvielfalt."}
   ],
   "keywords": [
     {"role": "system", "content": "You are a helpful assistant."},
@@ -27,9 +29,13 @@
     {"role": "assistant", "content": "Auch an einem verregneten Tag erstrahlt die Natur in ihrer vollen Pracht. Die Regentropfen auf den Blättern glänzen wie funkelnde Diamanten im ersten Licht des Tages."}
   ],
   "title": [
-
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Create 3 title in german for an blog article about the topic 'KI in der Medizin'. The title should be formulated professional and informative."},
+    {"role": "assistant", "content": "1.\"Revolutionäre Anwendungen von KI in der Medizin\" 2.\"Künstliche Intelligenz und die Zukunft der Gesundheitsversorgung\" 3.\"Wie KI die Diagnose und Behandlung von Krankheiten transformiert\""}
   ],
   "content": [
-
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Generate 3 blog article article in german with approx. 35 words about the topic '{PLACEHOLDER_TEXT}'. The article should be written professional and informative and shall not hold a title."},
+    {"role": "assistant", "content": "1.\"Künstliche Intelligenz (KI) hat die Medizin revolutioniert. In diesem Artikel erfahren Sie, wie KI zur Diagnose, Prävention und Behandlung von Krankheiten eingesetzt wird. Wir beleuchten ihre Vorteile und Herausforderungen für die Gesundheitsbranche.\" 2.\"Moderne bildgebende Verfahren sind entscheidend für die medizinische Diagnose. Dieser Artikel erklärt, wie KI-Algorithmen die Interpretation von medizinischen Bildern verbessern. Wir diskutieren ihre Anwendung in der Radiologie, Pathologie und anderen Bereichen.\" 3.\"Die Integration von KI in die Medizin wirft ethische Fragen auf. Dieser Artikel beleuchtet Themen wie Datenschutz, Patientenvertrauen und den Umgang mit sensiblen Gesundheitsdaten. Wir betrachten die notwendigen Richtlinien und Best Practices für eine verantwortungsvolle Nutzung von KI in der Medizin.\""}
   ]
 }
