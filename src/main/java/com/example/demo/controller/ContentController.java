@@ -105,65 +105,6 @@ public class ContentController {
     public String performeAi(@RequestBody AiRequest request) throws JSONException {
         String text = request.getContext();
         String task = request.getTask();
-        Task prompt = null;
-
-        JSONObject obj = loadJson();
-        JSONObject properties = null;
-        try {
-            properties = obj.getJSONObject("properties");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        switch (task) {
-            case "translation":
-                System.out.println("Performing translation...");
-                prompt = new Translate(text, properties.get("srcLng").toString(), properties.get("trgLng").toString());
-                break;
-            case "summarization":
-                System.out.println("Performing summarization...");
-                prompt = new Summarize(text,  Integer.parseInt(properties.get("summary").toString()));
-                break;
-            case "spellchecking":
-                System.out.println("Performing spellchecking...");
-                prompt = new Spelling(text);
-                break;
-            case "keywords":
-                System.out.println("Extracting keywords...");
-                prompt = new ExtractKeywords(text, Integer.parseInt(properties.get("keywords").toString()));
-                break;
-            case "rewording":
-                System.out.println("Performing rewording...");
-                prompt = new Rewording(text);
-                break;
-            case "title":
-                System.out.println("Performing generate title...");
-                prompt = new TitleGeneration(text, properties.get("type").toString(), properties.get("tonality").toString());
-                break;
-            case "content":
-                System.out.println("Performing generate content...");
-                prompt = new ContentGeneration(text, properties.get("type").toString(), properties.get("tonality").toString(),  Integer.parseInt(properties.get("generation").toString()));
-                break;
-            default:
-                System.out.println("Invalid action.");
-                break;
-        }
-        return GPT.performAI(prompt.prompting());
-    }
-
-    private JSONObject loadJson() {
-        JSONObject obj = null;
-        String filename = "src/main/resources/mandant.json";
-        try {
-            obj = parseJSONFile(filename);
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
-        }
-        return obj;
-    }
-
-    private static JSONObject parseJSONFile(String filename) throws JSONException, IOException {
-        String content = new String(Files.readAllBytes(Paths.get(filename)));
-        return new JSONObject(content);
+        return GPT.performAI(task, text);
     }
 }
